@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://ec2-54-242-2-231.compute-1.amazonaws.com:8081/api/deals';
+const API_URL = 'http://ec2-52-203-244-210.compute-1.amazonaws.com:8081/api/deals';
 
 export const getDeals = async () => {
   const response = await axios.get(API_URL);
