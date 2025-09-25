@@ -1,49 +1,52 @@
 import React from 'react';
-import '../components/style.css';
-import { Link, Outlet } from "react-router-dom";
+import { Bar, Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
+import './style.css';
 
-const AboutUs = () => {
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
+
+const Dashboard = () => {
+  const barData = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    datasets: [
+      {
+        label: 'Sales',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: 'rgba(52, 152, 219, 0.5)',
+        borderColor: 'rgba(52, 152, 219, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const pieData = {
+    labels: ['Customers', 'Companies', 'Leads', 'Orders'],
+    datasets: [
+      {
+        label: 'CRM Data',
+        data: [300, 50, 100, 120],
+        backgroundColor: ['#3498db', '#2ecc71', '#f1c40f', '#e74c3c'],
+        borderColor: ['#fff', '#fff', '#fff', '#fff'],
+        borderWidth: 1,
+      },
+    ],
+  };
+
   return (
-    <div className="about-container">
-      <h2>About Our Electronic Store</h2>
-      <p>
-        Welcome to our E-Commerce platform, your one-stop shop for the latest and greatest in electronics!
-        We specialize in high-quality products, including computers, mobiles, laptops, and accessories.
-      </p>
-
-      <div className="about-grid">
-      <Link to="/computers">
-        <div className="about-item">        
-          <img src="computers.jpeg" alt="Computers" />
-          <h3>Computers</h3>
-          <p>Find the best computers for gaming, work, and personal use.</p>
+    <div className="dashboard-container">
+      <h2>CRM Dashboard</h2>
+      <div className="chart-container">
+        <div className="chart">
+          <h3>Sales Data</h3>
+          <Bar data={barData} />
         </div>
-        </Link>
-
-        <Link to="/mobiles">
-        <div className="about-item">
-          <img src="mobiles.jpeg" alt="Mobiles" />
-          <h3>Mobiles</h3>
-          <p>Latest smartphones from top brands at unbeatable prices.</p>
+        <div className="chart">
+          <h3>Data Overview</h3>
+          <Pie data={pieData} />
         </div>
-        </Link>
-        <Link to="/laptops">
-        <div className="about-item">
-          <img src="laptops.jpeg" alt="Laptops" />
-          <h3>Laptops</h3>
-          <p>Powerful laptops for professionals, students, and gamers.</p>
-        </div>
-        </Link>
-        <Link to="/pendrives">
-        <div className="about-item">
-          <img src="accessories.jpg" alt="Accessories" />
-          <h3>Accessories</h3>
-          <p>Find the best accessories like pendrives, keyboards, and more.</p>
-        </div>
-        </Link>
       </div>
     </div>
   );
 };
 
-export default AboutUs;
+export default Dashboard;
