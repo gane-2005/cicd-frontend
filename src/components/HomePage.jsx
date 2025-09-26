@@ -32,7 +32,7 @@ const HomePage = () => {
 
   const handleSeedData = async () => {
     try {
-      const response = await axios.post("http://localhost:8081/api/seed");
+      const response = await axios.post("http://ec2-98-84-125-166.compute-1.amazonaws.com:8081/api/seed");
       alert(response.data);
     } catch (error) {
       alert("Error seeding data: " + error.message);
