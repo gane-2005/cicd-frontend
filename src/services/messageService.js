@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://ec2-52-203-244-210.compute-1.amazonaws.com:8081/api/messages';
+const API_URL = 'http://ec2-98-84-125-166.compute-1.amazonaws.com:8081/api/messages';
 
 export const getMessages = async () => {
   const response = await axios.get(API_URL);
